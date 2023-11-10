@@ -12,6 +12,7 @@ class PinController extends Controller
 {
     public function create()
     {
+        $title = "Your Page Title"; 
         return view('admin.course-form-pin.create');
     }
 
