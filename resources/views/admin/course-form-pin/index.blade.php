@@ -1,10 +1,9 @@
 <!-- resources/views/admin/course-form-pin/index.blade.php -->
 
-@extends('layouts.app') {{-- or your desired layout --}}
-
-@section('title', 'Course Form Pins')
-
+@extends('admin.layouts.master')
+@section('title', $title)
 @section('content')
+
     <table>
         <thead>
         <tr>

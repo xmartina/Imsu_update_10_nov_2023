@@ -13,8 +13,9 @@ class CourseFormPinController extends Controller
 {
     public function index()
     {
+        $title = "List Pin Page";
         $pins = CourseFormPin::all();
-        return view('admin.course-form-pin.index', compact('pins'));
+        return view('admin.course-form-pin.index', compact('pins'), compact('title'));
     }
 
 }
