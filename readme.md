@@ -1,72 +1,177 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Configuring a Repl
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Every new repl comes with a `.replit` and a `replit.nix` file that let you configure your repl to do just about anything in any language!
 
-## About Laravel
+### `replit.nix`
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Every new repl is now a Nix repl, which means you can install any package available on Nix, and support any number of languages in a single repl. You can search for a list of available packages [here](https://search.nixos.org/packages).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The `replit.nix` file should look something like the example below. The `deps` array specifies which Nix packages you would like to be available in your environment. 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```nix
+{ pkgs }: {
+    deps = [
+        pkgs.cowsay
+    ];
+}
+```
+### Learn More About Nix
 
-## Learning Laravel
+If you'd like to learn more about Nix, here are some great resources:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### Written Guides
+- [Getting started with Nix](https://docs.replit.com/programming-ide/nix-on-replit) — Our own getting started guide
+- [Building with Nix on Replit](https://docs.replit.com/tutorials/python/build-with-nix) — Deploy a production web stack on Replit with Nix
+- [Nix Pills](https://nixos.org/guides/nix-pills/) — Guided introduction to Nix
+- [Nix Package Manager Guide](https://nixos.org/manual/nix/stable/) — A comprehensive guide of the Nix Package Manager
+- [A tour of Nix](https://nixcloud.io/tour) — Learn the nix language itself
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1400 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### Video Guides
+- [Nixology](https://www.youtube.com/playlist?list=PLRGI9KQ3_HP_OFRG6R-p4iFgMSK1t5BHs) — A series of videos introducing Nix in a practical way
+- [Taking the Nix pill](https://www.youtube.com/watch?v=QwLWIy2KleE) — An introduction to what Nix is, how it works, and a walkthrough of publishing several new languages to Replit within an hour.
+- [Nix: A Deep Dive](https://www.youtube.com/watch?v=TsZte_9GfPE) — A deep dive on Nix: what Nix is, why you should use it, and how it works.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### `.replit`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
+The `.replit` file allows you to configure many options for your repl, most basic of which is the `run` command.
 
-## Contributing
+Check out how to use the `.replit` file to configure a repl to enable [Clojure](https://clojure.org):
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<iframe width="640" height="400" style="margin-bottom: 10px;" src="https://www.loom.com/embed/cbe1f74399c546c38e0c1871893816c5" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-## Security Vulnerabilities
+`.replit` files follow the [toml configuration format](https://learnxinyminutes.com/docs/toml/) and look something like this:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```toml
+# The command that is executed when the run button is clicked.
+run = ["cargo", "run"]
 
-## License
+# The default file opened in the editor.
+entrypoint = "src/main.rs"
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Setting environment variables
+[env]
+FOO="foo"
+
+# Packager configuration for the Universal Package Manager
+# See https://github.com/replit/upm for supported languages.
+[packager]
+language = "rust"
+
+  [packager.features]
+  # Enables the package search sidebar
+  packageSearch = true
+  # Enabled package guessing
+  guessImports = false
+
+# Per language configuration: language.<lang name> 
+[languages.rust]
+# The glob pattern to match files for this programming language
+pattern = "**/*.rs"
+
+    # LSP configuration for code intelligence
+    [languages.rust.languageServer]
+    start = ["rust-analyzer"]
+```
+
+In the code above, the strings in the array assigned to `run` are executed in order in the shell whenever you hit the "Run" button. 
+
+The `language` configuration option helps the IDE understand how to provide features like [packaging](https://blog.replit.com/upm) and [code intelligence](https://blog.replit.com/intel).
+
+And the `[languages.rust]` `pattern` option is configured so that all files ending with `.rs` are treated as Rust files. The name is user-defined and doesn't have any special meaning, we could have used `[languages.rs]` instead.
+
+We can now set up a language server specifically for Rust. Which is what we do with the next configuration option: `[languages.rust.languageServer]`. [Language servers](https://microsoft.github.io/language-server-protocol/#:~:text=A%20Language%20Server%20is%20meant,servers%20and%20development%20tools%20communicate.) add smart features to your editor like code intelligence, go-to-definition, and documentation on hover.
+
+Since repls are fully configurable, you're not limited to just one language. For example, you could install Clojure and its language server using `replit.nix`, add a `[languages.clojure]` configuration option to the above `.replit` file that matched all Clojure files and have code intelligence enabled for both languages in the same repl.
+
+### `.replit` reference
+
+A `Command` can either be a string or a list of strings. If the `Command` is a string (`"node index.js"`), it will be executed via `sh -c "<Command>"`. If the Command is a list of strings (`["node", "index.js"]`), it will be directly executed with the list of strings passed as arguments. When possible, it is preferred to pass a list of strings.
+
+- `run`
+  - **Type:** `Command`
+  - **Description:** The command to run the repl.
+- `entrypoint`
+  - **Type:**  `string`
+  - **Description:** The name of the main file including the extension. This is the file that will be run, and shown by default when opening the editor.
+- `onBoot`
+  - **Type:** `Command`
+  - **Description:** The command that executes after your repl has booted.
+- `compile`
+  - **Type:** `Command`
+  - **Description:** The shell command to compile the repl before the `run` command. Only for compiled languages like C, C++, and Java.
+- `audio`
+  - **Type:** `boolean`
+  - **Description:** Enables [system-wide audio](https://docs.replit.com/misc/playing-audio-replit) for the repl when configured to `true`.
+- `language`
+  - **Type:** `string`
+  - **Description:** Reserved. During a GitHub import, this tells the workspace which language should be used when creating the repl. For new repls, this option will always be Nix, so this field should generally not be touched.
+- `[env]`
+  - **Description:** Set environment variables. Don't put secrets here—use the Secrets tab in the left sidebar.
+  - **Example:** `VIRTUAL_ENV = "/home/runner/${REPL_SLUG}/venv"`
+- `interpreter`
+  - **Description:** Specifies the interpreter, which should be a compliant [prybar binary](https://github.com/replit/prybar).
+  - `command`
+    - **Type:** `[string]`
+    - **Description:** This is the command that will be run to start the interpreter. It has higher precedence than the `run` command (i.e. `interpreter` command will run instead of the `run` command).
+  - `prompt`
+    - **Type:** `[byte]`
+    - **Description:** This is the prompt used to detect running state, if unspecified it defaults to `[0xEE, 0xA7]`.
+- `[unitTest]`
+  - Enables unit testing to the repl.
+  - `language`
+      - **Type:** `string`
+      - **Description:** The language you want the unit tests to run. Supported strings: `java`, `python`, and `nodejs`.
+- `[packager]`
+  - **Description:** Package management configuration. Learn more about installing packages [here](https://docs.replit.com/repls/packages/#DirectImports).
+  - `afterInstall`
+    - **Type:** `Command`
+    - **Description:** The command that is executed after a new package is installed.
+  - `ignoredPaths`
+    - **Type:** `[string]`
+    - **Description:** List of paths to ignore while attempting to guess packages.
+  - `ignoredPackages`
+    - **Type:** `[string]`
+    - **Description:** List of modules to never attempt to guess a package for, when installing packages.
+  - `language`
+    - **Type:** `string`
+    - **Description:** Specifies the language to use for package operations. See available languages in the [Universal Package Manager](https://github.com/replit/upm) repository.
+  - `[packager.features]`
+    - **Description:** UPM features that are supported by the specified languages.
+      - `packageSearch`
+        - **Type:** Boolean
+        - **Description:** When set to `true`, enables a package search panel in the sidebar.
+      - `guessImports`
+        - **Type:** Boolean
+        - **Description:** When set to `true`, UPM will attempt to guess which packages need to be installed prior to running the repl.
+- `[languages.<language name>]`
+  - **Description:** Per-language configuration. The language name has no special meaning other than to allow multiple languages to be configured at once.
+  - `pattern`
+    - **Type:** `string`
+    - **Description:** A [glob](https://en.wikipedia.org/wiki/Glob_(programming)) used to identify which files belong to this language configuration (`**/*.js`)
+  - `syntax`
+    - **Type:** `string`
+    - **Description:** The language to use for syntax highlighting.
+  - `[languages.<language name>.languageServer]`
+    - **Description:** Configuration for setting up [LSP](https://microsoft.github.io/language-server-protocol/) for this language. This allows for code intelligence (autocomplete, underlined errors, etc...).
+    - `start`
+      - **Type:** `Command`
+      - **Description:** The command used to start the LSP server for the specified language.
+- `[nix]`
+  - **Description:** Where you specify a [Nix channel](https://nixos.wiki/wiki/Nix_channels).
+  - `channel`
+    - **Type:** `string`
+    - **Description:** A nix channel id.
+- `[debugger]`
+  - **Description:** Advanced users only. See field types & docstrings [here](https://gist.github.com/Bardia95/98987c69c6970b1bb0698b863e2a84de#file-dot-replit-debugger-config-go), and in the advanced section below.
+
+### Example configurations
+#### Beginner
+##### [LaTeX](https://replit.com/@ZachAtReplit/LaTeX?v=1#.replit)
+##### [Clojure](https://replit.com/@replit/Clojure?v=1#.replit)
+#### Advanced
+##### [Python](https://replit.com/@replit/Python?v=1)
+##### [HTML, CSS, JS](https://replit.com/@replit/HTML-CSS-JS?v=1#.replit)
+##### [Java](https://replit.com/@replit/Java-Beta?v=1#.replit)
+##### [Node.js](https://replit.com/@replit/Nodejs?v=1#.replit)
+##### [C++](https://replit.com/@replit/CPlusPlus?v=1)
