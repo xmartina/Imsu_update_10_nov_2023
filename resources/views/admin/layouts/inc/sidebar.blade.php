@@ -24,6 +24,13 @@
                 @endcanany
 
                 @canany(['application-create', 'application-view'])
+                    <li class="{{ Request::is('admin/admission/application*') ? 'active' : '' }}"><a href="{{ route('admin.course-form-pin.index') }}" class="">
+    {{--                            {{ trans_choice('module_application', 2) }}--}}
+                            List All Course Pins
+                        </a></li>
+                @endcanany
+
+                @canany(['application-create', 'application-view'])
                 <li class="{{ Request::is('admin/admission/application*') ? 'active' : '' }}"><a href="{{ route('admin.application.index') }}" class="">{{ trans_choice('module_application', 2) }}</a></li>
                 @endcanany
 
