@@ -1,5 +1,3 @@
-<!-- resources/views/admin/course-form-pin/index.blade.php -->
-
 @extends('admin.layouts.master')
 @section('title', $title)
 @section('content')

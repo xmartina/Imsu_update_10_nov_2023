@@ -40,7 +40,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
 
     public function department()
     {
@@ -106,7 +106,7 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Leave', 'review_by', 'id');
     }
-    
+
     public function examRoutines()
     {
         return $this->belongsToMany('App\Models\ExamRoutine', 'exam_routine_user', 'user_id', 'exam_routine_id');
@@ -122,7 +122,7 @@ class User extends Authenticatable
     {
         return $this->morphToMany('App\Models\Document', 'docable');
     }
-    
+
     public function contents()
     {
         return $this->morphToMany('App\Models\Content', 'contentable');
@@ -161,5 +161,10 @@ class User extends Authenticatable
     public function transactions()
     {
         return $this->morphMany('App\Models\Transaction', 'transactionable');
+    }
+
+    public function courseFormPinsCreated()
+    {
+        return $this->hasMany('App\Models\CourseFormPin', 'created_admin_id');
     }
 }

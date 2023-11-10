@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CourseFormPin extends Model
 {
@@ -13,12 +13,12 @@ class CourseFormPin extends Model
         'student_used_id', 'date_used', 'time_used'
     ];
 
-    public function createdAdmin()
+    public function createdAdmin(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_admin_id');
     }
 
-    public function studentUsed()
+    public function studentUsed(): BelongsTo
     {
         return $this->belongsTo(Student::class, 'student_used_id');
     }
