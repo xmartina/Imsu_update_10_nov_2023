@@ -16,9 +16,13 @@
 // routes/web.php
 
 use App\Http\Controllers\PinController;
+use App\Http\Controllers\Admin\CourseFormPinController;
 
 Route::get('/admin/course-form-pin/create', [PinController::class, 'create'])->name('pins.create');
 Route::post('/admin/course-form-pin/store', [PinController::class, 'store'])->name('pins.store');
+// routes/web.php
+
+Route::get('/admin/course-form-pin', [CourseFormPinController::class, 'index'])->name('admin.course-form-pin.index');
 
 
 // Web Routes

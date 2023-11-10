@@ -13,14 +13,13 @@ class CourseFormPin extends Model
         'student_used_id', 'date_used', 'time_used'
     ];
 
-    // Define relationships if necessary
-    // public function createdAdmin()
-    // {
-    //     return $this->belongsTo(User::class, 'created_admin_id');
-    // }
+    public function createdAdmin()
+    {
+        return $this->belongsTo(User::class, 'created_admin_id');
+    }
 
-    // public function studentUsed()
-    // {
-    //     return $this->belongsTo(Student::class, 'student_used_id');
-    // }
+    public function studentUsed()
+    {
+        return $this->belongsTo(Student::class, 'student_used_id');
+    }
 }
