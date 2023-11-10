@@ -14,7 +14,7 @@ class CreateCourseFormPinTable extends Migration
     public function up()
     {
        Schema::create('course_form_pin', function (Blueprint $table) {
-        $table->id('pin_id');
+        $table->id();
         $table->string('pin_num', 29);
         $table->integer('is_used')->default(2);
         $table->unsignedBigInteger('created_admin_id');
@@ -25,6 +25,7 @@ class CreateCourseFormPinTable extends Migration
         $table->foreign('student_used_id')->references('id')->on('students')->nullable(); // Assuming you have a 'students' table
         $table->date('date_used')->nullable();
         $table->time('time_used')->nullable();
+        $table->timestamps();
             });
     }
 
