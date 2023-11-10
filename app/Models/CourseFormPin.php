@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\User;
+use App;
 
 class CourseFormPin extends Model
 {
@@ -16,7 +16,7 @@ class CourseFormPin extends Model
 
     public function createdAdmin(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'created_admin_id');
+        return $this->belongsTo(App\User::class, 'created_admin_id');
     }
 
     public function studentUsed(): BelongsTo
