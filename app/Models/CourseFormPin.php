@@ -9,6 +9,7 @@ use App\Models\Student;
 
 class CourseFormPin extends Model
 {
+    protected $table = 'course_form_pin';
     protected $fillable = [
         'pin_num', 'is_used', 'created_admin_id',
         'date_created', 'time_created',
