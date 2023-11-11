@@ -7,6 +7,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\CourseFormPin;
 use App\Http\Controllers\Controller;
 use Illuminate\View\View;
+use App\Models\Student;
+//use App\Http\Controllers\Admin;
 
 class CourseFormPinController extends Controller
 {
@@ -16,9 +18,12 @@ class CourseFormPinController extends Controller
         $pins = CourseFormPin::with('createdAdmin')->get();
 
         foreach ($pins as $pin) {
-            if ($pin->createdAdmin === null) {
-                // Log or print a message for debugging
-                \Log::error("User not found for CourseFormPin with ID: {$pin->id}");
+            // Manually retrieve user for debugging
+            $user = UserController::find($pin->created_admin_id);
+
+            // Log or print a message for debugging
+            if ($user === null) {
+                \Log::error("User not found for CourseFormPin with ID: {$pin->id}, created_admin_id: {$pin->created_admin_id}");
             }
         }
 

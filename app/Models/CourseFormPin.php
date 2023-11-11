@@ -23,7 +23,7 @@ class CourseFormPin extends Model
 
     public function createdAdmin(): BelongsTo
     {
-        return $this->belongsTo(App\User::class, 'created_admin_id');
+        return $this->belongsTo(App\User::class, 'created_admin_id', 'id');
     }
 
     public function studentUsed(): BelongsTo
