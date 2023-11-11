@@ -31,11 +31,8 @@
                 </td>
                 <td>
                     @if($pin->is_used == 1 && $pin->createdAdmin)
-                        @if($pin->createdAdmin->is_admin == 1)
-                            Admin: {{ $pin->createdAdmin->first_name }} {{ $pin->createdAdmin->last_name }}
-                        @else
-                            User: {{ $pin->createdAdmin->first_name }} {{ $pin->createdAdmin->last_name }}
-                        @endif
+                        User ID: {{ $pin->createdAdmin->id }}
+                        User Name: {{ $pin->createdAdmin->first_name }} {{ $pin->createdAdmin->last_name }}
                     @else
                         Error: User not found
                     @endif
