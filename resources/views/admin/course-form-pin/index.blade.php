@@ -1,7 +1,8 @@
 @extends('admin.layouts.master')
-@section('title', $title)
-@section('content')
 
+@section('title', $title)
+
+@section('content')
     <table>
         <thead>
         <tr>
@@ -16,7 +17,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($pins as $pin)
+        @forelse($pins as $pin)
             <tr>
                 <td>{{ $pin->pin_num }}</td>
                 <td>
@@ -49,7 +50,11 @@
                 <td>{{ $pin->date_used }}</td>
                 <td>{{ $pin->time_used }}</td>
             </tr>
-        @endforeach
+        @empty
+            <tr>
+                <td colspan="8">No pins found</td>
+            </tr>
+        @endforelse
         </tbody>
     </table>
 @endsection
