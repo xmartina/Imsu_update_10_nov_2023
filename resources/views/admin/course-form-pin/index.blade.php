@@ -31,7 +31,11 @@
                 </td>
                 <td>
                     @if($pin->is_used == 1 && $pin->createdAdmin)
-                        {{ $pin->createdAdmin->first_name }} {{ $pin->createdAdmin->last_name }}
+                        @if($pin->createdAdmin->is_admin == 1)
+                            Admin: {{ $pin->createdAdmin->first_name }} {{ $pin->createdAdmin->last_name }}
+                        @else
+                            User: {{ $pin->createdAdmin->first_name }} {{ $pin->createdAdmin->last_name }}
+                        @endif
                     @else
                         Error: User not found
                     @endif
@@ -54,6 +58,11 @@
             <tr>
                 <td colspan="8">No pins found</td>
             </tr>
+            @if ($pins->count() == 0)
+                <tr>
+                    <td colspan="8">Database query returned no results.</td>
+                </tr>
+            @endif
         @endforelse
         </tbody>
     </table>
