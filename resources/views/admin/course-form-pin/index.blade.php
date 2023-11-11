@@ -30,12 +30,10 @@
                     @endif
                 </td>
                 <td>
-                    @if($pin->is_used == 1 && $pin->createdAdmin)
-                        @if($pin->createdAdmin->is_admin == 1)
-                            Admin: {{ $pin->createdAdmin->first_name }} {{ $pin->createdAdmin->last_name }}
-                        @else
-                            User: {{ $pin->createdAdmin->first_name }} {{ $pin->createdAdmin->last_name }}
-                        @endif
+                    @if($pin->is_used == 1 && $pin->createdAdmin && $pin->createdAdmin->is_admin == 1)
+                            {{ $pin->createdAdmin->first_name }} {{ $pin->createdAdmin->last_name }}
+                    @elseif($pin->is_used == 2 && $pin->createdAdmin && $pin->createdAdmin->is_admin == 1)
+                        {{ $pin->createdAdmin->first_name }} {{ $pin->createdAdmin->last_name }}
                     @else
                         Error: User not found
                     @endif
