@@ -14,8 +14,8 @@ class CreateCourseFormPinTable extends Migration
             $table->integer('is_used')->default(2);
             $table->unsignedBigInteger('created_admin_id');
             $table->foreign('created_admin_id')->references('id')->on('admins');
-            $table->date('date_created')->useCurrent();
-            $table->time('time_created')->useCurrent();
+            $table->date('date_created')->default(DB::raw('CURRENT_DATE'));
+            $table->time('time_created')->default(DB::raw('CURRENT_TIME'));
             $table->unsignedBigInteger('student_used_id')->nullable();
             $table->foreign('student_used_id')->references('id')->on('students')->nullable();
             $table->date('date_used')->nullable();
