@@ -17,7 +17,7 @@ class CourseFormPin extends Model
     ];
 
     protected $rules = [
-        'pin_num' => 'required|unique:course_form_pins',
+        'pin_num' => 'required|unique:course_form_pin',
         'is_used' => 'required|in:1,2,3',
     ];
 
@@ -28,6 +28,6 @@ class CourseFormPin extends Model
 
     public function studentUsed(): BelongsTo
     {
-        return $this->belongsTo(Student::class, 'student_used_id');
+        return $this->belongsTo(Student::class, 'student_used_id', 'id');
     }
 }
